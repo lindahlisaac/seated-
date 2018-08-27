@@ -1,0 +1,50 @@
+Model requirements-
+
+Class = Table.java
+1. Calculate TABLE geometry
+*table origin
+ -xLoc
+ -yLoc
+*table shape
+*table width
+*table height
+*table occupants
+*table color
+
+Class = Event.java
+2. Event type
+*number of attendees
+*name of event
+*date of event
+*length of event
+*room layout
+ -add space to left/right or top/bottom
+ -Templates (Classroom, Ballroom, Gymnasium, ...)
+
+Class = Mouse.java
+3. Mouse Movement
+*current mouse loc
+ -mouse xLoc
+ -mouse yLoc
+*was mouse released over valid location
+ -not released over existing table (snap to nearest location if small overlap)
+ -enough room for table to fit 
+
+Class = EventIO.java
+4. EventIO.java
+*Import name list from Excel file
+*Quick add names to event
+*Start with EVENT template
+ -Classroom
+ -Ballroom
+ -Gymnamsium
+ 
+
+Class = EventLaunch
+5. EventLaunch.java
+*Start with/create blank layout
+*start with basic layout
+*start with template
+ 
+
+
