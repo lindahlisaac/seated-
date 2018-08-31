@@ -21,7 +21,7 @@ public class SeatedModel {
         SeatedEvent se = new SeatedEvent();
         EventIO eio = new EventIO();
         EventLaunch el = new EventLaunch();
-        Movement move = new Movement(); 
+        Movement mvmt = new Movement(); 
         Table table = new Table();
     }
     

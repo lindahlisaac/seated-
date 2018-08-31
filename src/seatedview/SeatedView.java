@@ -8,12 +8,15 @@ package seatedview;
 import java.util.ArrayList;
 import java.util.Iterator;
 import javafx.application.Application;
+import static javafx.application.Application.STYLESHEET_MODENA;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.SplitPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.TilePane;
 import javafx.scene.layout.VBox;
@@ -23,11 +26,12 @@ import javafx.stage.Stage;
  *
  * @author Isaac Lindahl <isaac.lindahl at https://github.com/lindahlisaac>
  */
-public class SeatedView extends Application{
+public class SeatedView {
     private VBox startPane;
     private ArrayList startButtonList;
     private HBox startButtonPane;
     private HBox startLabelBox;
+    private NewEventView nev;
     public Button newEventButton;
     
     public SeatedView(){
@@ -35,6 +39,8 @@ public class SeatedView extends Application{
     }
     
     private void createStartView(){
+        nev = new NewEventView();
+        
         startPane = new VBox(); 
         startButtonList = new ArrayList();
         startButtonPane = new HBox();
@@ -73,6 +79,7 @@ public class SeatedView extends Application{
         
         return temp;
     }
+    
     public VBox getStartPane() {
         return startPane;
     }
@@ -89,14 +96,9 @@ public class SeatedView extends Application{
         
         return startBox;
     }
-    
-    @Override
-    public void start(Stage primaryStage) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
 
-    public StackPane getNewEventPane(){
-        return new StackPane();
+    public Pane getNewEventPane(){
+        return nev.getSplitPane();
     }
 
    

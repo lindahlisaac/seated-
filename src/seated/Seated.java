@@ -13,6 +13,7 @@ import javafx.scene.control.Button;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import seatedcontroller.SeatedController;
 import seatedmodel.SeatedModel;
 import seatedview.SeatedView;
 
@@ -21,38 +22,34 @@ import seatedview.SeatedView;
  * @author Isaac Lindahl <isaac.lindahl at https://github.com/lindahlisaac>
  */
 public class Seated extends Application {
-    private StackPane root;
+    public StackPane root;
     private Scene scene;
+    private SeatedModel model;
+    private SeatedView view;
+    private SeatedController controller;
+    
     @Override
     public void start(Stage primaryStage) {
-        
-        SeatedView sv = new SeatedView();
-        
-        SeatedModel sm = new SeatedModel();
+        model = new SeatedModel();
+        view = new SeatedView();
+        controller = new SeatedController(model, view);
         
         Button btn = new Button();
         
         root = new StackPane();
-        root.getChildren().add(sv.getStartPane());
+        root.getChildren().add(view.getStartPane());
         
-        scene = new Scene(root, 500, 400);
+        scene = new Scene(root, 800, 600);
         
         primaryStage.setTitle("Hello World!");
         primaryStage.setScene(scene);
         primaryStage.show();
-        
-        
-        sv.newEventButton.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                root.getChildren().clear();
-                root.getChildren().clear();
-                                
-                root.setPrefSize(800,600);
-                root.getChildren().add(sv.getNewEventPane());
-                scene = new Scene(new VBox(root),800,600);
-            }
-        });
+
+        controller.setMain(this);
+    }
+    
+    public StackPane getRootPane(){
+        return root;
     }
 
     /**
